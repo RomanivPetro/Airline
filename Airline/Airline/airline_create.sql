@@ -50,3 +50,22 @@ ALTER TABLE tblReservation ADD CONSTRAINT CH_tblReservation_Status
 CHECK ([Status] = 1 OR [Status] = 2);
 
 
+CREATE TABLE tblLog
+(
+	Id INT NOT NULL IDENTITY(1,1),
+	[Date] datetime NOT NULL,
+	OperationId INT  NULL,
+	NewOperationId INT  NULL,
+	Seat VARCHAR(20) NULL,
+	NewSeat VARCHAR(20) NULL,
+	FlightId INT NULL,
+	NewFlightId INT  NULL,
+	CustomerId INT  NULL,
+	NewCustomerId INT  NULL,
+	Cost NUMERIC (18,4)  NULL,
+	NewCost NUMERIC (18,4) NULL,
+	[Status] INT  NULL,
+	NewStatus INT NULL,	
+);
+ALTER TABLE tblLog ADD CONSTRAINT PK_tblLog_Id PRIMARY KEY(Id);
+

@@ -9,6 +9,26 @@ CREATE PROC spCreateTicket
 AS
 
 BEGIN
+-- validation
+DECLARE @c  int = -1;
+SELECT @c = r.Id FROM tblReservation r WHERE r.Seat = @Seat;
+if(@c >= 0)
+begin
+Raiserror ('Error',16,1)
+end
+else
+
+---
+ DECLARE @IsFlown INT;
+ SELECT @IsFlown = Id FROM tblFlight f WHERE id = @FlightId AND f.DepartureTime > GETDATE();
+ IF (@IsFlown is NOT null)
+ BEGIN
+ Raiserror ('Error',16,1)
+ end
+else
+
+
+
 DECLARE @Cost  NUMERIC(18,4);
 
 
